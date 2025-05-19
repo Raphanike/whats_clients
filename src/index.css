@@ -11,6 +11,9 @@
     flex-direction: column;
     gap: 12px;
     }
+    .login {
+        align-items: center;
+    }
 
     .messages {
     flex-grow: 1;

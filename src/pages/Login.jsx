@@ -2,7 +2,7 @@ import LoginForm from '../components/LoginForm'
 
 export default function Login({ onLogin }) {
     return (
-        <div>
+        <div className='login'>
         <h1>Mini WhatsApp</h1>
         <LoginForm onLogin={onLogin} />
         </div>
