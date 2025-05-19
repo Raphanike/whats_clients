@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 import api from '../api/api'
 
-const socket = io('https://whats-back-end-5.onrender.com')
+const socket = io('https://whats-back-end-7.onrender.com')
 
 export default function Chat({ user }) {
     const [receiver, setReceiver] = useState('')
