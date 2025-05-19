@@ -35,6 +35,7 @@ export default function Chat({ user }) {
     }
 
     return (
+
         <div>
         <h2>Chat de {user.name}</h2>
         <input value={receiver} onChange={e => setReceiver(e.target.value)} placeholder="ID do destinatário" />
