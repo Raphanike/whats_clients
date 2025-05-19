@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 import api from '../api/api'
 
-const socket = io('http://localhost:5000')
+const socket = io('https://whats-back-end-5.onrender.com')
 
 export default function Chat({ user }) {
     const [receiver, setReceiver] = useState('')
@@ -13,6 +13,10 @@ export default function Chat({ user }) {
         socket.on('receive_message', (msg) => {
         setMessages(prev => [...prev, msg])
         })
+
+        return () => {
+        socket.off('receive_message')
+        }
     }, [])
 
     const sendMessage = () => {
@@ -22,8 +26,12 @@ export default function Chat({ user }) {
     }
 
     const loadMessages = async () => {
+        try {
         const res = await api.get(`/messages/${user.id}/${receiver}`)
         setMessages(res.data)
+        } catch (err) {
+        alert('Erro ao carregar mensagens: ' + (err.response?.data?.error || err.message))
+        }
     }
 
     return (
