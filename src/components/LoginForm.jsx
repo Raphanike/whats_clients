@@ -33,7 +33,7 @@ export default function LoginForm({ onLogin }) {
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha" />
         <button type="submit">{isRegistering ? 'Cadastrar' : 'Entrar'}</button>
         <p onClick={() => setIsRegistering(!isRegistering)}>
-            {isRegistering ? 'Já tem conta? Faça login' : 'Não tem conta? Cadastre-se'}
+            {isRegistering ? 'Já tem conta? Faça login' : ''}
         </p>
         </form>
     )

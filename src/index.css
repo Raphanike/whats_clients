@@ -4,6 +4,8 @@ body, html {
   display: flex;
   justify-content: center; /* centraliza horizontal */
   align-items: center;     /* centraliza vertical */
+  background-color: #e5d2be
+;
 }
 
 .login {
@@ -23,11 +25,131 @@ h1 {
 }
 
 input {
-    display: flex;
-    margin: auto;
-    margin-bottom: 12px;
+    width: 90%;
+    padding: 10px;
+    margin: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     
 }
 button {
-    margin: auto;
+    width: 90%;
+    padding: 10px;
+    margin: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    cursor: pointer;
+}
+
+
+.chat-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mensagem {
+ background-color: rgb(128, 175, 216);
+ border-radius: 10%;
+}
+
+.chat-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+input,
+button {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.destinatario {
+  display: none;
+}
+
+.destinatario2 {
+  display: none;
+}
+
+
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background-color: #966432;
+  border-radius: 12px;
+  height: 300px;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+
+.message.sent {
+  background-color: #2b3d1d;
+  align-self: flex-end;
+  border-bottom-right-radius: 0;
+}
+
+.message.received {
+  background-color: #42e75d;
+  align-self: flex-start;
+  border-bottom-left-radius: 0;
+}
+
+.mensagem {
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 8px;
+  max-width: 70%;
+  font-size: 14px;
+}
+
+/* Mensagens enviadas por você */
+.voce {
+  background-color: #406e45e5;
+  color: #ebe7e7;
+  text-align: right;
+  margin-left: auto;
+}
+
+/* Mensagens recebidas */
+.outro {
+  background-color: #5f5454dc;
+  color: #fdf9f9;
+  text-align: left;
+  margin-right: auto;
+}
+
+
+
+
+/* Desktop */
+@media (min-width: 768px) {
+  .chat-container {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin-top: 24px;
+  }
 }

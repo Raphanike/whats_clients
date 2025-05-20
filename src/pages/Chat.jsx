@@ -37,18 +37,37 @@ export default function Chat({ user }) {
     return (
 
         <div>
-        <h2>Chat de {user.name}</h2>
-        <input value={receiver} onChange={e => setReceiver(e.target.value)} placeholder="ID do destinatário" />
-        <button onClick={loadMessages}>Carregar conversa</button>
+    <h2>Olá, {user.name}</h2>
 
-        <div>
-            {messages.map((msg, i) => (
-            <p key={i}><b>{msg.sender === user.id ? 'Você' : 'Outro'}:</b> {msg.content}</p>
-            ))}
-        </div>
+    <input
+        className='destinatario'
+        value={receiver}
+        onChange={e => setReceiver(e.target.value)}
+        placeholder="ID do destinatário"
+    />
 
-        <input value={content} onChange={e => setContent(e.target.value)} placeholder="Digite sua mensagem" />
-        <button onClick={sendMessage}>Enviar</button>
-        </div>
+    <button className='destinatario2' onClick={loadMessages}>
+        
+    </button>
+
+    <div>
+        {messages.map((msg, i) => (
+        <p
+            className={`mensagem ${msg.sender === user.id ? 'voce' : 'outro'}`}
+            key={i}
+        >
+            <b>{msg.sender === user.id ? 'Eu  ' : 'Mensageiro '}:</b> {msg.content}
+        </p>
+        ))}
+    </div>
+
+    <input
+        className='botao'
+        value={content}
+        onChange={e => setContent(e.target.value)}
+        placeholder="Digite sua mensagem"
+    />
+<button onClick={sendMessage}>Enviar</button>
+</div>
     )
 }
