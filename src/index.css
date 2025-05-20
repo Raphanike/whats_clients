@@ -7,7 +7,7 @@ body,html {
 
 }
 body {
-  background-image: url('./src/img/capa.png');
+  background-image: url('/img/capa.png');
 
 }
 
