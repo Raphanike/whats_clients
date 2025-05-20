@@ -3,9 +3,9 @@ body, html {
   margin: 0;
   display: flex;
   justify-content: center; /* centraliza horizontal */
-  align-items: center;     /* centraliza vertical */
-  background-color: #dfd1c4;
-;
+  align-items: center;     
+  background-image: url('img/Captura\ de\ tela\ 2025-05-19\ 230600.png');
+
 }
 
 .login {
