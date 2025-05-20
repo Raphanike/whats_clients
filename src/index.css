@@ -4,7 +4,7 @@ body, html {
   display: flex;
   justify-content: center; /* centraliza horizontal */
   align-items: center;     /* centraliza vertical */
-  background-image: url('/img/Captura\ de\ tela\ 2025-05-19\ 230600.png');
+  background-color: #dfd1c4;
 ;
 }
 
