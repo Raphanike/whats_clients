@@ -37,7 +37,7 @@ export default function Chat({ user }) {
     return (
 
         <div>
-    <h2>Olá, {user.name}</h2>
+    <h2 className='boas'>Olá, {user.name}</h2>
 
     <input
         className='destinatario'
@@ -65,7 +65,7 @@ export default function Chat({ user }) {
         className='botao'
         value={content}
         onChange={e => setContent(e.target.value)}
-        placeholder="Digite sua mensagem"
+        placeholder="Mensagem"
     />
 <button onClick={sendMessage}>Enviar</button>
 </div>
