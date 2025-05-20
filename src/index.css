@@ -17,11 +17,17 @@ body, html {
   background: white;
   border-radius: 8px;
   background-color: rgba(152, 177, 113, 0.041);
+  display: flex;
+  flex-direction: column;    /* Elementos em coluna: imagem, depois formulário */
+  align-items: center;       /* Alinha no centro horizontal */
+  justify-content: center;   /* Alinha no centro vertical (se o container tiver altura) */
+  height: 40vh;             /* Ocupa altura total da tela para centralizar verticalmente */
+  text-align: center;        /* Centraliza textos dentro de elementos como <h1> */
 }
 
 h1 {
     text-align: center;
-    color: rgba(61, 212, 119, 0.849);
+    color: rgba(26, 196, 91, 0.849);
     font-weight: 600;
 }
 
@@ -31,15 +37,20 @@ input {
     margin: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #3ba56bab; /* Verde */
+    color: rgb(8, 8, 8);
+    cursor: pointer;
+  
     
 }
+
 button {
-    width: 80%;
+    width: 30%;
     padding: 10px;
     margin: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #3b885ee5; /* Verde */
+    background-color: #30b16a9c; /* Verde */
     color: white;
     cursor: pointer;
 }
@@ -67,16 +78,22 @@ button {
   text-align: center;
 }
 
-input,
 button {
   padding: 10px;
   margin-bottom: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
-  width: 100%;
+  width: 80%;
   box-sizing: border-box;
 }
+
+.email {
+  background-color: #30b16a9c;
+  color: rgb(12, 12, 12); /* Para o texto ficar visível no fundo escuro */
+}
+
+
 
 .destinatario {
   display: none;
@@ -91,7 +108,15 @@ button {
   color: rgb(10, 10, 10);
   border: none;
   cursor: pointer;
+  width: 80%;
 }
+
+h1 img {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+}
+
 
 
 

@@ -29,8 +29,8 @@ export default function LoginForm({ onLogin }) {
         {isRegistering && (
             <input value={name} onChange={e => setName(e.target.value)} placeholder="Nome" />
         )}
-        <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha" />
+        <input className='email' value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
+        <input className='senha' type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha" />
         <button type="submit">{isRegistering ? 'Cadastrar' : 'Entrar'}</button>
         <p onClick={() => setIsRegistering(!isRegistering)}>
             {isRegistering ? 'Já tem conta? Faça login' : ''}
