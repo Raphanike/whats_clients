@@ -1,12 +1,56 @@
-# React + Vite
+# 📱 Clone WhatsApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um clone funcional do WhatsApp, desenvolvido com **React** no frontend e **Node.js/WebSocket** no backend, oferecendo uma experiência de mensagens em tempo real com uma interface moderna e responsiva.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades Principais
 
-## Expanding the ESLint configuration
+✅ Login de usuário com verificação  
+✅ Conversas em tempo real (WebSocket)  
+✅ Interface responsiva e intuitiva  
+✅ Backend e frontend totalmente integrados  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### 🔹 Frontend
+
+- ⚛️ **React + Vite** → Interface moderna e com alto desempenho  
+- 🌐 **React Router** → Navegação entre páginas sem recarregar  
+- 🎨 **HTML e CSS** → Estruturação e estilização personalizadas  
+- 📱 **Mobile First Design** → Foco na experiência mobile  
+
+### 🔸 Backend
+
+- 🧠 **Node.js** com suporte a **WebSocket** → Comunicação em tempo real  
+- 🛠️ **Portman** (Mock API) → Cadastro e simulação de usuários  
+- ☁️ **MongoDB Atlas** → Banco de dados na nuvem para persistência de dados  
+- 🔗 **Render** → Deploy e hospedagem da aplicação  
+
+---
+
+## 📷 Layout
+
+O layout foi construído com foco na usabilidade e inspirado na experiência real do WhatsApp:
+
+- Lista de conversas
+- Tela de bate-papo em tempo real
+- Responsivo para mobile e desktop
+
+---
+
+## 📁 Como Executar Localmente
+
+### 🔧 Pré-requisitos
+
+- Node.js instalado
+- MongoDB Atlas configurado
+
+### 🔽 Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/clone-whatsapp.git
+cd clone-whatsapp
+https://whats-clients.vercel.app/
