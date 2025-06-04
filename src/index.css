@@ -24,8 +24,18 @@ body {
   flex-direction: column;    /* Elementos em coluna: imagem, depois formulário */
   align-items: center;       /* Alinha no centro horizontal */
   justify-content: center;   /* Alinha no centro vertical (se o container tiver altura) */
-  height: 40vh;             /* Ocupa altura total da tela para centralizar verticalmente */
+  height: 50vh;             /* Ocupa altura total da tela para centralizar verticalmente */
   text-align: center;        /* Centraliza textos dentro de elementos como <h1> */
+}
+
+#cta-register-login {
+  cursor: pointer;
+  transition: ease 0.3s;
+}
+
+#cta-register-login:hover {
+  color: rgba(26, 196, 91, 0.849);
+  transition: ease 0.3s;
 }
 
 h1 {
@@ -70,8 +80,8 @@ button {
 }
 
 .mensagem {
- background-color: rgb(128, 175, 216);
- border-radius: 10%;
+  background-color: rgb(128, 175, 216);
+  border-radius: 10%;
 }
 
 .chat-header {
