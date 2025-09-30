@@ -11,15 +11,14 @@ export default function Chat({ user }) {
 
   useEffect(() => {
   socket.on('receive_message', (msg) => {
-    setMessages(prev => [...prev, msg]);
-
-
+    setMessages(prev => [...prev, msg])
+  })
 
   return () => {
     socket.off('receive_message');
   };
-}, []); // <- esse fecha certinho, não precisa de vírgula extra
-
+}, [])
+    
     const sendMessage = () => {
         const msg = { sender: user.id, receiver, content }
         socket.emit('send_message', msg)
