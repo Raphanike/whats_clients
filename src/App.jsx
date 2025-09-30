@@ -5,6 +5,12 @@ import Chat from './pages/Chat'
 function App() {
   const [user, setUser] = useState(null)
 
+    useEffect(() => {
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission();
+    }
+    }, []);
+
   return (
     <div>
       {user ? <Chat user={user} /> : <Login onLogin={setUser} />}
