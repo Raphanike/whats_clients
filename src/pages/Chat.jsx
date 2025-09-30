@@ -1,92 +1,73 @@
-// src/pages/Chat.jsx
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import io from 'socket.io-client'
 import api from '../api/api'
 
+const socket = io('https://whats-back-end-7.onrender.com')
+
 export default function Chat({ user }) {
-  const socketRef = useRef(null)
-  const [receiver, setReceiver] = useState('')
-  const [content, setContent] = useState('')
-  const [messages, setMessages] = useState([])
+    const [receiver, setReceiver] = useState('')
+    const [content, setContent] = useState('')
+    const [messages, setMessages] = useState([])
 
   useEffect(() => {
-    // só conectar no cliente e quando tivermos user
-    if (!user || typeof window === 'undefined') return
+  socket.on('receive_message', (msg) => {
+    setMessages(prev => [...prev, msg])
+  })
 
-    // cria a conexão aqui (executa apenas no browser)
-    socketRef.current = io('https://whats-back-end-7.onrender.com')
-
-    const handleReceive = (msg) => {
-      setMessages(prev => [...prev, msg])
-
-      // Proteção para ambientes sem Notification
-      if (
-        typeof window !== 'undefined' &&
-        'Notification' in window &&
-        msg.sender !== user.id &&
-        Notification.permission === 'granted'
-      ) {
-        new Notification('Nova mensagem!', {
-          body: msg.content,
-          icon: '/img/whats.png'
-        })
-      }
+  return () => {
+    socket.off('receive_message');
+  };
+}, [])
+    
+    const sendMessage = () => {
+        const msg = { sender: user.id, receiver, content }
+        socket.emit('send_message', msg)
+        setContent('')
     }
 
-    socketRef.current.on('receive_message', handleReceive)
-
-    return () => {
-      if (socketRef.current) {
-        socketRef.current.off('receive_message', handleReceive)
-        socketRef.current.disconnect()
-      }
+    const loadMessages = async () => {
+        try {
+        const res = await api.get(`/messages/${user.id}/${receiver}`)
+        setMessages(res.data)
+        } catch (err) {
+        alert('Erro ao carregar mensagens: ' + (err.response?.data?.error || err.message))
+        }
     }
-  }, [user?.id])
 
-  const sendMessage = () => {
-    if (!socketRef.current) return
-    const msg = { sender: user.id, receiver, content }
-    socketRef.current.emit('send_message', msg)
-    setContent('')
-  }
+    return (
 
-  const loadMessages = async () => {
-    try {
-      const res = await api.get(`/messages/${user.id}/${receiver}`)
-      setMessages(res.data)
-    } catch (err) {
-      alert('Erro ao carregar mensagens: ' + (err.response?.data?.error || err.message))
-    }
-  }
+        <div>
+    <h2 className='boas'>Olá, {user.name}</h2>
 
-  return (
-    <div>
-      <h2 className='boas'>Olá, {user.name}</h2>
-
-      <input
+    <input
         className='destinatario'
         value={receiver}
         onChange={e => setReceiver(e.target.value)}
         placeholder="ID do destinatário"
-      />
+    />
 
-      <button className='destinatario2' onClick={loadMessages}></button>
+    <button className='destinatario2' onClick={loadMessages}>
+        
+    </button>
 
-      <div>
+    <div>
         {messages.map((msg, i) => (
-          <p className={`mensagem ${msg.sender === user.id ? 'voce' : 'outro'}`} key={i}>
+        <p
+            className={`mensagem ${msg.sender === user.id ? 'voce' : 'outro'}`}
+            key={i}
+        >
             <b>{msg.sender === user.id ? 'Eu  ' : 'Mensageiro '}:</b> {msg.content}
-          </p>
+        </p>
         ))}
-      </div>
+    </div>
 
-      <input
+    <input
         className='botao'
         value={content}
         onChange={e => setContent(e.target.value)}
         placeholder="Mensagem"
-      />
-      <button onClick={sendMessage}>Enviar</button>
-    </div>
-  )
+    />
+<button onClick={sendMessage}>Enviar</button>
+</div>
+    )
 }
