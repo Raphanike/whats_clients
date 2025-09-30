@@ -9,25 +9,23 @@ export default function Chat({ user }) {
     const [content, setContent] = useState('')
     const [messages, setMessages] = useState([])
 
-    useEffect(() => {
-        socket.on('receive_message', (msg) => {
-        setMessages(prev => [...prev, msg])
-        })
+  useEffect(() => {
+  socket.on('receive_message', (msg) => {
+    setMessages(prev => [...prev, msg]);
 
-        
-        if (msg.sender !== user.id && Notification.permission === "granted") {
-          new Notification("Nova mensagem!", {
-            body: msg.content,
-            icon: "/img/whats.png" // opcional
-          });
-        }
-        
+    // dispara notificação se não for minha mensagem
+    if (msg.sender !== user.id && Notification.permission === "granted") {
+      new Notification("Nova mensagem!", {
+        body: msg.content,
+        icon: "/img/whats.png" // opcional
       });
+    }
+  });
 
-        return () => {
-        socket.off('receive_message')
-        }
-    }, [])
+  return () => {
+    socket.off('receive_message');
+  };
+}, []); // <- esse fecha certinho, não precisa de vírgula extra
 
     const sendMessage = () => {
         const msg = { sender: user.id, receiver, content }
