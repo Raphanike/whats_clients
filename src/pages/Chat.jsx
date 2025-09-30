@@ -14,6 +14,16 @@ export default function Chat({ user }) {
         setMessages(prev => [...prev, msg])
         })
 
+          // Notificação só se não for você que enviou
+        if (msg.sender !== user.id && Notification.permission === "granted") {
+          new Notification("Nova mensagem!", {
+            body: msg.content,
+            icon: "/img/whats.png" // opcional
+          });
+        }
+        
+      });
+
         return () => {
         socket.off('receive_message')
         }
